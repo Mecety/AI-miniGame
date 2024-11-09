@@ -13,9 +13,9 @@ import streamlit as st
 llm = AzureChatOpenAI(  # 获取模型
     deployment_name="agentlive-gpt4o",
     openai_api_version="2023-05-15",
-    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+    # azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
     azure_endpoint=st.secrets["general"]["AZURE_OPENAI_ENDPOINT"],
-    openai_api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+    # openai_api_key=os.getenv("AZURE_OPENAI_API_KEY"),
     openai_api_key=st.secrets["general"]["AZURE_OPENAI_API_KEY"]
     # temperature=0,
     # max_tokens=1024,
