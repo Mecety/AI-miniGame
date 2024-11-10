@@ -1,6 +1,6 @@
 import streamlit as st
 import json
-from utils import generate_incomplete_text,generate_complete_text
+from utils import generate_incomplete_text,generate_complete_text,clear_memory,close_connection
 
 # 设置页面标题
 st.title("我的应用程序")
@@ -34,7 +34,7 @@ elif st.session_state.page == "页面 1":
     st.header("故事完形填空")
 
     option = st.selectbox("主题", ["随机", "自定义"])
-    wordsnum = st.selectbox("文本字数", [50, 100, 200, 300, 400])
+    wordsnum = st.selectbox("文本字数", [50, 100, 200, 300, 400], index=0)
 
     if option == "自定义":
         theme = st.text_input("故事主题")
@@ -143,6 +143,8 @@ elif st.session_state.page == "页面 1":
             st.session_state.pop('completeText', None)
             st.session_state.pop('inputs', None)
             st.session_state.page = "页面 1"
+            clear_memory()
+            close_connection()
             st.rerun()
 
 
